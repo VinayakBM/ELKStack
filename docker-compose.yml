@@ -49,6 +49,17 @@ services:
       - elasticsearch
     ports:
       - "9100:9100"
+  
+  elasticsearch-kopf:
+    container_name: elasticsearch-kopf
+    image: lmenezes/elasticsearch-kopf
+    depends_on:
+      - elasticsearch
+    environment:
+      - KOPF_SERVER_NAME=localhost
+      - KOPF_ES_SERVERS=127.0.0.1:9200
+    ports:
+      - "9000:80"
 
 networks:
 
